@@ -1,6 +1,6 @@
 package com.billytest.ip;
 
-public class IpTransUtil {
+class IpTransUtil {
 
 	public static Long ip2Dec(String ip) {
 
