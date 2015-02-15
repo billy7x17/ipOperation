@@ -27,7 +27,7 @@ public class MaskDecodeUtil {
 
 		String maskBin = Long.toBinaryString(IpTransUtil.ip2Dec(mask));
 
-		byte[] result = binaryVersus(ipBin, maskBin);
+		byte[] result = binaryAnd(ipBin, maskBin);
 
 		result[result.length - 1] = 1;
 
@@ -44,7 +44,7 @@ public class MaskDecodeUtil {
 		return list;
 	}
 
-	private static byte[] binaryVersus(String a, String b) {
+	private static byte[] binaryAnd(String a, String b) {
 
 		byte[] result = new byte[32];
 
