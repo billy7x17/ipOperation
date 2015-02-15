@@ -25,21 +25,28 @@ public class MaskDecodeUtil {
 
 		String ipBin = Long.toBinaryString(IpTransUtil.ip2Dec(ip));
 
-		String maskBin = Long.toBinaryString(IpTransUtil.ip2Dec(mask));
+		String maskBin = Long.toBinaryString((IpTransUtil.ip2Dec(mask)));
 
 		byte[] result = binaryAnd(ipBin, maskBin);
 
 		result[result.length - 1] = 1;
 
-		String last = "";
+		byte[] firstResult = binaryAnd(ipBin,
+				"11111111111111111111111111111111");
+
+		Long last = new Long(0L);
+
+		Long first = new Long(0L);
 
 		for (int i = 0; i < result.length; i++) {
-			last += (result[i]*Math.pow(2D, 31-i));
+			last = last + (long) (result[i] * Math.pow(2D, 31 - i));
+			first += (long) (firstResult[i] * Math.pow(2D, 31 - i));
 		}
 
 		List<String> list = new ArrayList<String>();
 
-		list.add(String.valueOf(last));
+		list.add(String.valueOf(IpTransUtil.dec2Ip(first)));
+		list.add(String.valueOf(IpTransUtil.dec2Ip(last)));
 
 		return list;
 	}
