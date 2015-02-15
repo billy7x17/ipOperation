@@ -18,7 +18,11 @@ public class IpSegmentUtil {
      */
     public static String getMask(String ipSegment) throws MaskErrorException {
 
-        String maskNum = ipSegment.split("/")[1];
+        String[] ips = ipSegment.split("/");
+
+        if (ips.length < 2) throw new MaskErrorException();
+
+        String maskNum = ips[1];
 
         if (Integer.valueOf(maskNum) < 1 || Integer.valueOf(maskNum) > 32) {
             throw new MaskErrorException();
@@ -38,9 +42,7 @@ public class IpSegmentUtil {
      */
     public static List<String> getExtremeIp(String ipSegment) throws MaskErrorException {
 
-        String seg[] = ipSegment.split("/");
-
-        String ip = seg[0];
+        String ip = ipSegment.split("/")[0];
 
         String mask = getMask(ipSegment);
 
@@ -48,15 +50,24 @@ public class IpSegmentUtil {
 
         Long maskLong = IpTransUtil.ip2Dec(mask);
 
-        Long last = ipLong | ((Long.lowestOneBit(maskLong) - 1));
+        /*
+         * Long.lowestOneBit(maskLong) - 1 为 掩码的补码 ip或掩码的补码为IP段中最后一个IP
+         */
+        Long last = ipLong | (Long.lowestOneBit(maskLong) - 1);
 
-        Long first = (ipLong & maskLong);
+        /*
+         * ip与掩码为IP段中第一个IP
+         */
+        Long first = ipLong & maskLong;
 
         List<String> list = new ArrayList<String>();
 
         String firstIp = String.valueOf(IpTransUtil.dec2Ip(first));
         String lastIp = String.valueOf(IpTransUtil.dec2Ip(last));
 
+        /*
+         * 去掉广播地址和网络号
+         */
         if (firstIp.endsWith(".0")) firstIp = firstIp.replaceAll("0$", "1");
 
         if (lastIp.endsWith(".255")) lastIp = lastIp.replaceAll("255$", "254");
@@ -90,6 +101,9 @@ public class IpSegmentUtil {
         Long firstIp = IpTransUtil.ip2Dec(first);
         Long lastIp = IpTransUtil.ip2Dec(last);
 
+        /*
+         * 首IP和尾IP顺序可以颠倒
+         */
         if (firstIp > lastIp) {
             Long tmp = firstIp;
             firstIp = lastIp;
@@ -98,6 +112,9 @@ public class IpSegmentUtil {
 
         List<String> ipList = new ArrayList<String>();
 
+        /*
+         * 去掉广播地址和网络号后，赋值list
+         */
         for (long _current_ip = firstIp; _current_ip <= lastIp; _current_ip++) {
             String ip = IpTransUtil.dec2Ip(_current_ip);
             if (!ip.endsWith(".0") && !ip.endsWith(".255")) ipList.add(ip);
