@@ -1,16 +1,16 @@
 package com.billytest.ip;
 
 /**
- * IP×Ö·û´®ÓëÊ®½øÖÆ³¤ÕûĞÍÊı¾İÀàĞÍ×ª»»µÄ¹¤¾ßÀà
+ * IPå­—ç¬¦ä¸²ä¸åè¿›åˆ¶é•¿æ•´å‹æ•°æ®ç±»å‹è½¬æ¢çš„å·¥å…·ç±»
  * @author <a href="mailto:li-zr@neusoft.com">Zongrui Li</a>
- * @version $Revision 1.0 $ 2015Äê2ÔÂ15ÈÕ ÏÂÎç3:13:04
+ * @version $Revision 1.0 $ 2015å¹´2æœˆ15æ—¥ ä¸‹åˆ3:13:04
  */
 class IpTransUtil {
 
     /**
-     * ip2Dec ×Ö·û´®×ª»»Îª³¤ÕûĞÍ
-     * @param ip IP×Ö·û´® ¸ñÊ½Îªxxx.xxx.xxx.xxx
-     * @return ³¤ÕûĞÍµÄIP
+     * ip2Dec å­—ç¬¦ä¸²è½¬æ¢ä¸ºé•¿æ•´å‹
+     * @param ip IPå­—ç¬¦ä¸² æ ¼å¼ä¸ºxxx.xxx.xxx.xxx
+     * @return é•¿æ•´å‹çš„IP
      */
     public static Long ip2Dec(String ip) {
 
@@ -30,9 +30,9 @@ class IpTransUtil {
     }
 
     /**
-     * dec2Ip ³¤ÕûĞÍ×ª»»Îª×Ö·û´®
-     * @param dec ³¤ÕûĞÍÊ®½øÖÆIP
-     * @return ¸ñÊ½Îªxxx.xxx.xxx.xxxµÄ×Ö·û´®
+     * dec2Ip é•¿æ•´å‹è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+     * @param dec é•¿æ•´å‹åè¿›åˆ¶IP
+     * @return æ ¼å¼ä¸ºxxx.xxx.xxx.xxxçš„å­—ç¬¦ä¸²
      */
     public static String dec2Ip(Long dec) {
 

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ip¶Î¹¤¾ßÀà
+ * ipæ®µå·¥å…·ç±»
  * @author <a href="mailto:li-zr@neusoft.com">Zongrui Li</a>
- * @version $Revision 1.0 $ 2015Äê2ÔÂ15ÈÕ ÏÂÎç2:59:46
+ * @version $Revision 1.0 $ 2015å¹´2æœˆ15æ—¥ ä¸‹åˆ2:59:46
  */
 public class IpSegmentUtil {
 
     /**
-     * getMask ¸ù¾İIP¶Î»ñÈ¡×ÓÍøÑÚÂë
-     * @param ipSegment ip¶Î£¬¸ñÊ½Îª192.168.1.1/24
-     * @return ×ÓÍøÑÚÂë
-     * @throws MaskErrorException ÈôÑÚÂëÎ»Êı²»ºÏ·¨£¬»áÅ×³öÒì³£
+     * getMask æ ¹æ®IPæ®µè·å–å­ç½‘æ©ç 
+     * @param ipSegment ipæ®µï¼Œæ ¼å¼ä¸º192.168.1.1/24
+     * @return å­ç½‘æ©ç 
+     * @throws MaskErrorException è‹¥æ©ç ä½æ•°ä¸åˆæ³•ï¼Œä¼šæŠ›å‡ºå¼‚å¸¸
      */
     public static String getMask(String ipSegment) throws MaskErrorException {
 
@@ -35,10 +35,10 @@ public class IpSegmentUtil {
     }
 
     /**
-     * getExtremeIp ¸ù¾İip¶Î»ñÈ¡Ê×Î²IP
-     * @param ipSegment ip¶Î£¬¸ñÊ½Îª192.168.1.1/24
-     * @return ÓÉÊ×Î»IP×é³ÉµÄlist£¬list[0]ÎªÊ×IP£¬list[1]ÎªÎ²IP
-     * @throws MaskErrorException ÈôÑÚÂëÎ»Êı²»ºÏ·¨£¬»áÅ×³öÒì³£
+     * getExtremeIp æ ¹æ®ipæ®µè·å–é¦–å°¾IP
+     * @param ipSegment ipæ®µï¼Œæ ¼å¼ä¸º192.168.1.1/24
+     * @return ç”±é¦–ä½IPç»„æˆçš„listï¼Œlist[0]ä¸ºé¦–IPï¼Œlist[1]ä¸ºå°¾IP
+     * @throws MaskErrorException è‹¥æ©ç ä½æ•°ä¸åˆæ³•ï¼Œä¼šæŠ›å‡ºå¼‚å¸¸
      */
     public static List<String> getExtremeIp(String ipSegment) throws MaskErrorException {
 
@@ -51,12 +51,12 @@ public class IpSegmentUtil {
         Long maskLong = IpTransUtil.ip2Dec(mask);
 
         /*
-         * Long.lowestOneBit(maskLong) - 1 Îª ÑÚÂëµÄ²¹Âë ip»òÑÚÂëµÄ²¹ÂëÎªIP¶ÎÖĞ×îºóÒ»¸öIP
+         * Long.lowestOneBit(maskLong) - 1 ä¸º æ©ç çš„è¡¥ç  ipæˆ–æ©ç çš„è¡¥ç ä¸ºIPæ®µä¸­æœ€åä¸€ä¸ªIP
          */
         Long last = ipLong | (Long.lowestOneBit(maskLong) - 1);
 
         /*
-         * ipÓëÑÚÂëÎªIP¶ÎÖĞµÚÒ»¸öIP
+         * ipä¸æ©ç ä¸ºIPæ®µä¸­ç¬¬ä¸€ä¸ªIP
          */
         Long first = ipLong & maskLong;
 
@@ -66,7 +66,7 @@ public class IpSegmentUtil {
         String lastIp = String.valueOf(IpTransUtil.dec2Ip(last));
 
         /*
-         * È¥µô¹ã²¥µØÖ·ºÍÍøÂçºÅ
+         * å»æ‰å¹¿æ’­åœ°å€å’Œç½‘ç»œå·
          */
         if (firstIp.endsWith(".0")) firstIp = firstIp.replaceAll("0$", "1");
 
@@ -79,10 +79,10 @@ public class IpSegmentUtil {
     }
 
     /**
-     * getIpSegmentSize ¸ù¾İIP¶ÎÊ×Î²IP»ñÈ¡IP¶ÎËùÓĞIP¸öÊı
-     * @param firstIp Ê×Î»IP
-     * @param lastIp Î²Î»IP
-     * @return IP¶ÎÀïËùÓĞIP¸öÊı
+     * getIpSegmentSize æ ¹æ®IPæ®µé¦–å°¾IPè·å–IPæ®µæ‰€æœ‰IPä¸ªæ•°
+     * @param firstIp é¦–ä½IP
+     * @param lastIp å°¾ä½IP
+     * @return IPæ®µé‡Œæ‰€æœ‰IPä¸ªæ•°
      */
     public static Integer getIpSegmentSize(String firstIp, String lastIp) {
 
@@ -91,10 +91,10 @@ public class IpSegmentUtil {
     }
 
     /**
-     * getIpList ¸ù¾İÊ×Î²IP»ñÈ¡ËùÓĞIPlist
-     * @param first Ê×Î»IP
-     * @param last Î²Î»IP
-     * @return IP¶ÎÀïËùÓĞIPµÄlist
+     * getIpList æ ¹æ®é¦–å°¾IPè·å–æ‰€æœ‰IPlist
+     * @param first é¦–ä½IP
+     * @param last å°¾ä½IP
+     * @return IPæ®µé‡Œæ‰€æœ‰IPçš„list
      */
     public static List<String> getIpList(String first, String last) {
 
@@ -102,7 +102,7 @@ public class IpSegmentUtil {
         Long lastIp = IpTransUtil.ip2Dec(last);
 
         /*
-         * Ê×IPºÍÎ²IPË³Ğò¿ÉÒÔµßµ¹
+         * é¦–IPå’Œå°¾IPé¡ºåºå¯ä»¥é¢ å€’
          */
         if (firstIp > lastIp) {
             Long tmp = firstIp;
@@ -113,7 +113,7 @@ public class IpSegmentUtil {
         List<String> ipList = new ArrayList<String>();
 
         /*
-         * È¥µô¹ã²¥µØÖ·ºÍÍøÂçºÅºó£¬¸³Öµlist
+         * å»æ‰å¹¿æ’­åœ°å€å’Œç½‘ç»œå·åï¼Œèµ‹å€¼list
          */
         for (long _current_ip = firstIp; _current_ip <= lastIp; _current_ip++) {
             String ip = IpTransUtil.dec2Ip(_current_ip);

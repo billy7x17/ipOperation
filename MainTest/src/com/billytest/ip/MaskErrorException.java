@@ -1,9 +1,9 @@
 package com.billytest.ip;
 
 /**
- * ·Ç·¨ÑÚÂëÒì³£Àà
+ * éæ³•æ©ç å¼‚å¸¸ç±»
  * @author <a href="mailto:li-zr@neusoft.com">Zongrui Li</a>
- * @version $Revision 1.0 $ 2015Äê2ÔÂ15ÈÕ ÏÂÎç3:15:50
+ * @version $Revision 1.0 $ 2015å¹´2æœˆ15æ—¥ ä¸‹åˆ3:15:50
  */
 public class MaskErrorException extends Exception {
 
