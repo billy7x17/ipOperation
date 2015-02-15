@@ -41,13 +41,13 @@ public class MainTest {
 			System.out.println(string);
 		}
 
-		List<String> ipList = IpSegmentUtil.getIpList(list.get(0), list.get(1));
+		List<String> ipList = IpSegmentUtil.getIpList(list.get(1), list.get(0));
 		
 		for (String i : ipList) {
 			System.out.println(i);
 		}
 		
-		System.out.println("total : " + IpSegmentUtil.getIpSegmentSize(list.get(0), list.get(1)));
+		System.out.println("total : " + IpSegmentUtil.getIpSegmentSize(list.get(1), list.get(0)));
 	}
 
 }
