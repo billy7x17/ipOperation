@@ -11,6 +11,13 @@ import java.util.List;
 public class IpSegmentUtil {
 
     /**
+     * 私有构造器，防止被实例化
+     */
+    private IpSegmentUtil() {
+
+    }
+
+    /**
      * getMask 根据IP段获取子网掩码
      * @param ipSegment ip段，格式为192.168.1.1/24
      * @return 子网掩码

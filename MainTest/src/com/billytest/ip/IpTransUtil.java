@@ -8,6 +8,13 @@ package com.billytest.ip;
 class IpTransUtil {
 
     /**
+     * 私有构造器，防止被实例化
+     */
+    private IpTransUtil() {
+
+    }
+
+    /**
      * ip2Dec 字符串转换为长整型
      * @param ip IP字符串 格式为xxx.xxx.xxx.xxx
      * @return 长整型的IP
